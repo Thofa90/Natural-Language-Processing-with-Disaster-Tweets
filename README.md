@@ -217,15 +217,18 @@ python
 You can run this project directly in Google Colab or clone it locally.
 
 1️⃣ Run in Google Colab
+
 Click the button below to open and run the notebook instantly in Colab:  
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Thofa90/Natural-Language-Processing-with-Disaster-Tweets/blob/main/NLP_Project_Twitter_Disaster_TextClassification_ipynb.ipynb)
 
 
 2️⃣ Run Locally
+
 If you prefer running the notebook locally:
 
 **Clone the repository**
+
 ```bash
 git clone https://github.com/Thofa90/Natural-Language-Processing-with-Disaster-Tweets.git
 cd Natural-Language-Processing-with-Disaster-Tweets
