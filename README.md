@@ -178,5 +178,34 @@ This dataset is **imbalanced** (more non-disaster tweets than disaster tweets), 
  
 **Step 7: Hyperparameter Tuning** 
 
+After testing multiple baseline models, **Logistic Regression** was further optimized using **GridSearchCV** to improve performance, especially for the minority class (Disaster tweets).
+
+**Best Parameters Found:**
+python
+{'C': 1, 'max_iter': 1000, 'penalty': 'l2', 'solver': 'liblinear'}
+
+**Key Results (TF-IDF Vectorizer, ngram_range=(1,2), max_features=5000):**
+
+	•	Cross-Validation Accuracy: 0.7946
+	•	Test Accuracy: 0.8175 ✅ (higher than CV — good sign of generalization)
+	•	F1-score (Disaster class): 0.77 → Improved from ~0.76 (baseline)
+	•	False Positives: 92 (Non-disaster misclassified as disaster)
+	•	False Negatives: 186 (Disaster misclassified as non-disaster)
+
+**Why It Improved:**
+
+	•	C=1 → Balanced regularization, avoiding over/underfitting.
+	•	liblinear solver → Efficient for small-to-medium datasets, supports L2 penalty.
+	•	Bigrams (1,2) → Captured important disaster-related phrases like “fire outbreak” and “flood warning”.
+	•	Feature limit (5000) → Reduced noise and focused on most informative tokens.
+
 **Step 8: Conclusion**
 
+	•	Best Overall Model: Naive Bayes (TF-IDF) remains slightly ahead in recall for disasters.
+	•	Best Tuned Model: Logistic Regression after hyperparameter tuning — competitive performance with improved precision and interpretability.
+	•	Real-World Impact: Both models are suitable for production in disaster tweet detection systems, with Logistic Regression being easier to explain to stakeholders.
+ 
+	•	Next Steps:
+ 
+	•	Experiment with ensemble methods (e.g., Voting Classifier combining Naive Bayes + Logistic Regression).
+	•	Try deep learning approaches (e.g., LSTM, BERT) for richer context understanding.
