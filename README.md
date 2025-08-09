@@ -78,6 +78,8 @@ from sklearn.model_selection import KFold, cross_val_score  # For cross-validati
 The Sentence Polarity dataset contains 10,662 sentences — 5,331 positive and 5,331 negative. The dataset has 2 columns
 	**•	text:** the text of the sentence
 	**•	target:** sentiment indicator (0 = negative, 1 = positive)
+ 
+ **Data can be found in Kaggle** (https://www.kaggle.com/c/nlp-getting-started/overview)
 
 **Step 3: Exploratory Data Analysis (EDA) Summary**
 
