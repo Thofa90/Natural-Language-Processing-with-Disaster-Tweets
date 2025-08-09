@@ -166,13 +166,13 @@ This dataset is **imbalanced** (more non-disaster tweets than disaster tweets), 
 **✅ Key Takeaways**
 
 - **Best Overall Model:** Naive Bayes with TF-IDF (highest disaster F1-score, balanced performance)
-- 
+  
 - **Why Not Accuracy?** With imbalanced data, accuracy can be misleading — a model predicting mostly non-disasters could still score high accuracy.
-- 
+  
 - **Metric Focus:** F1-score for disaster class + macro average gives a fairer evaluation.
-- 
+  
 - **Next Steps:**
-- 
+  
   - Hyperparameter tuning for Naive Bayes & Logistic Regression.
   - Use class weights or oversampling to improve disaster recall.
  
