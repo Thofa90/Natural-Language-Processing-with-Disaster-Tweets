@@ -39,12 +39,20 @@ import numpy as np  #for numerical operations
 import pandas as pd  #for data manipulation
 import random  #for shuffling the data
 import nltk
+import string
 import re  # or handling regular expressions
+
+from nltk.corpus import stopwords, wordnet
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+
 
 from nltk.stem import WordNetLemmatizer  #for lemmatizing words
 from nltk.corpus import stopwords  #for stop word removal
 from nltk.tokenize import word_tokenize  #for tokenizing sentences into words
 nltk.download('punkt_tab')  #Downloads the 'punkt' tokenizer table used for tokenization of text into sentences or words
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger_eng')
 
 **Downloading necessary NLTK resources**
 
@@ -89,6 +97,28 @@ The Sentence Polarity dataset contains 10,662 sentences — 5,331 positive and 5
 
  
 **Step 4: Data Preprocessing**
+
+Text Preprocessing
+
+	•	Tools Used: NLTK for tokenization, lemmatization, POS tagging, and stopword removal.
+ 
+	•	Steps:
+ 
+	    1.	Resource Setup — Downloaded NLTK stopwords, POS tags, and WordNet data.
+	 
+	    2.	POS Mapping — Mapped NLTK POS tags to WordNet tags for precise lemmatization.
+	 
+	    3.	Cleaning Function (preprocess_tweet) —
+	 
+	       •	Converted text to lowercase.
+	       •	Removed URLs, mentions, hashtags, HTML tags, numbers, and punctuation.
+	       •	Tokenized text, removed stopwords, and filtered short/non-alphabetic words.
+	       •	Lemmatized tokens using POS tags for better normalization.
+	       •	Rejoined tokens into a clean string.
+		
+	    4.	Applied to Dataset — All tweets transformed into clean, normalized text.
+
+📌 Why Important: Cleans noisy raw tweets, removes irrelevant tokens, and creates high-quality input for vectorization and modeling, improving both accuracy and interpretability.
 
 **Step 5: Feature Extraction (TF-IDF Vectorization)**  
 
