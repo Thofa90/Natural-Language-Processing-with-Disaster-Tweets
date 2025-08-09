@@ -67,15 +67,26 @@ from sklearn.model_selection import KFold, cross_val_score  # For cross-validati
 
 **Step 2: Load & Preview Data**
 
-**Step 3: Exploratory Data Analysis (EDA)**
+The Sentence Polarity dataset contains 10,662 sentences — 5,331 positive and 5,331 negative. The dataset has 2 columns
+	**•	text:** the text of the sentence
+	**•	target:** sentiment indicator (0 = negative, 1 = positive)
 
-	•	Data info & null value check
-	•	Target class distribution
-	•	Tweet length analysis
-	•	Frequent word analysis & word clouds
-	•	Hashtag, mention, and link frequency
-	•	Examples of ambiguous tweets
-	•	Overlapping words between classes
+**Step 3: Exploratory Data Analysis (EDA) Summary**
+
+    •	NO missing values
+	
+	•	Class Balance — Non-disaster tweets: 57%, disaster tweets: 42.9%.
+ 
+	•	Tweet Length — Disaster tweets are generally longer, often providing more context; very short tweets (<20 chars) are usually non-disaster and ambiguous.
+ 
+	•	Word Clouds — Disaster tweets frequently include terms like fire, flood, storm, death, bomb, and location names (California, Hiroshima), indicating urgency and human impact. Common noise tokens (t, co, amp, u, https) require cleaning.
+ 
+	•	Hashtags & Links — Most tweets lack hashtags or mentions, but ~50% contain links, which may correlate with news/disaster reports.
+ 
+	•	Overlapping Words — 34 of the top 50 words are common across both classes, mostly stopwords and generic terms; only 16 are unique, showing the need for stopword removal, TF-IDF weighting, and contextual features (n-grams, embeddings).
+
+ 📌 Implication: Strong preprocessing (URL removal, stopword filtering, lemmatization) and engineered features (tweet length, presence of hashtags/links) are key for improving classification.
+
  
 **Step 4: Data Preprocessing**
 
