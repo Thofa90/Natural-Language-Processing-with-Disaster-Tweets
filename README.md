@@ -3,7 +3,9 @@
 ## 📌 Project Goal
 
 The goal of this project is to build a machine learning model that can automatically classify tweets as either:
+
 	•	Disaster (1) → The tweet reports a real disaster or emergency.
+ 
 	•	Non-disaster (0) → The tweet is unrelated to a real disaster.
 
 This work is inspired by a Kaggle competition and uses a dataset of 10,000 labeled tweets.
@@ -31,26 +33,26 @@ This project demonstrates how natural language processing and machine learning c
 
 **Step 1: Import Libraries**
 
-All the necessary libraries to run this project on Python are stated below-
+**All the necessary libraries to run this project on Python are stated below-**
 
 import numpy as np  #for numerical operations
-import pandas as pd  # for data manipulation
-import random  # for shuffling the data
+import pandas as pd  #for data manipulation
+import random  #for shuffling the data
 import nltk
-import re  # for handling regular expressions
+import re  # or handling regular expressions
 
-from nltk.stem import WordNetLemmatizer  # for lemmatizing words
-from nltk.corpus import stopwords  # for stop word removal
-from nltk.tokenize import word_tokenize  # for tokenizing sentences into words
-nltk.download('punkt_tab')  # Downloads the 'punkt' tokenizer table used for tokenization of text into sentences or words
+from nltk.stem import WordNetLemmatizer  #for lemmatizing words
+from nltk.corpus import stopwords  #for stop word removal
+from nltk.tokenize import word_tokenize  #for tokenizing sentences into words
+nltk.download('punkt_tab')  #Downloads the 'punkt' tokenizer table used for tokenization of text into sentences or words
 
-Downloading necessary NLTK resources
+**Downloading necessary NLTK resources**
 
 nltk.download('stopwords')  # List of common stop words in English
 nltk.download('punkt')  # Pre-trained tokenizer models
 nltk.download('wordnet')  # WordNet lemmatizer dataset
 
-Libraries for text feature extraction and model training
+**Libraries for text feature extraction and model training**
 
 from sklearn.feature_extraction.text import TfidfVectorizer  # Convert text into numerical features (TF-IDF)
 from sklearn.feature_extraction.text import CountVectorizer  # Convert text into numerical features (Count Vectorizer)
@@ -58,7 +60,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split  # Logistic regression for classification
 from sklearn.svm import LinearSVC  # Support Vector Machines for classification
 
-Libraries for model evaluation
+**Libraries for model evaluation**
 
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix  # For model evaluation metrics
 from sklearn.model_selection import KFold, cross_val_score  # For cross-validation
