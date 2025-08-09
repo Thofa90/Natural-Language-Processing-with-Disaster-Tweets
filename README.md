@@ -117,17 +117,64 @@ Text Preprocessing
 	       •	Rejoined tokens into a clean string.
 		
 	    4.	Applied to Dataset — All tweets transformed into clean, normalized text.
+	    5. Word Clouds after preprocessing: Disaster tweets feature urgent, event-specific terms (fire, flood, storm, death), while non-disaster tweets focus on casual, everyday vocabulary (new, love, day, make), providing clear thematic separation for classification.
 
 📌 Why Important: Cleans noisy raw tweets, removes irrelevant tokens, and creates high-quality input for vectorization and modeling, improving both accuracy and interpretability.
 
-**Step 5: Feature Extraction (TF-IDF Vectorization)**  
+**Step 5: Feature Extraction (TF-IDF Vectorization)** 
 
-**Step 6: Model Training & Evaluation** 
+	•	Purpose: Convert cleaned text into numeric feature vectors for machine learning models.
+	•	Method Used: Applied vectorization techniques (e.g., TF-IDF, CountVectorizer) to represent tweets based on:
+	•	Word frequency and
+	•	Importance in context (down-weighting common words).
+	•	Why Important:
+	•	Enables ML algorithms like Logistic Regression, Naive Bayes, and SVM to process text data.
+	•	Preserves meaningful patterns while reducing noise.
+	•	Produces scalable, sparse matrices for efficient computation.
+	•	Impact: Provides the numerical foundation for training accurate and interpretable NLP classification models.
+
+**Step 6: Modeling & Evaluation Summary (Pre-Tuning)** 
 
 	•	Naive Bayes
 	•	Logistic Regression
 	•	Linear SVC
 	•	Random Forest
+ 
+Four models were tested using CountVectorizer and TF-IDF representations: Naive Bayes, Logistic Regression, Linear SVC, and Random Forest.
+
+Key Findings:
+
+	•	TF-IDF consistently outperformed CountVectorizer across all models, providing better term discrimination.
+	•	Naive Bayes (TF-IDF) achieved the highest accuracy (0.82), performing especially well on non-disaster tweets, though recall for disaster tweets was slightly lower (69%).
+	•	Logistic Regression (TF-IDF) delivered balanced precision and recall for both classes, slightly trailing Naive Bayes in accuracy.
+	•	Linear SVC showed a notable drop in accuracy with CountVectorizer but was competitive with TF-IDF.
+	•	Random Forest performed consistently but lagged slightly behind linear models.
+
+Best Overall Choice (Pre-Tuning): ✅ Naive Bayes with TF-IDF — best accuracy and solid class balance.
+
+This dataset is **imbalanced** (more non-disaster tweets than disaster tweets), so we evaluate models primarily using **F1-score** — especially for the disaster class (label 1) — instead of accuracy alone.
+
+| Model                | Vectorizer | F1-score (Class 1) | Macro Avg F1 | Notes |
+|----------------------|------------|--------------------|--------------|-------|
+| **Naive Bayes**      | **TF-IDF** | **0.76**           | **0.80**     | Best overall — high precision, decent recall |
+| Logistic Regression  | TF-IDF     | 0.76               | 0.80         | Balanced precision & recall |
+| Linear SVC           | TF-IDF     | 0.76               | 0.79         | Slightly higher recall, lower precision |
+| Random Forest        | TF-IDF     | 0.75               | 0.79         | Lower recall for disasters |
+| Naive Bayes          | Count      | 0.77               | 0.80         | Strongest in CountVectorizer group |
+| Others (Count)       | Count      | ≤0.75               | ≤0.79        | Lower performance than TF-IDF |
+
+**✅ Key Takeaways**
+
+- **Best Overall Model:** Naive Bayes with TF-IDF (highest disaster F1-score, balanced performance)
+- 
+- **Why Not Accuracy?** With imbalanced data, accuracy can be misleading — a model predicting mostly non-disasters could still score high accuracy.
+- 
+- **Metric Focus:** F1-score for disaster class + macro average gives a fairer evaluation.
+- 
+- **Next Steps:**
+- 
+  - Hyperparameter tuning for Naive Bayes & Logistic Regression.
+  - Use class weights or oversampling to improve disaster recall.
  
 **Step 7: Hyperparameter Tuning** 
 
